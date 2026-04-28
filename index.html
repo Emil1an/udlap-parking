@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>UDLAP Parking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="phone">
+    <div class="container">
+      <div class="logo">U</div>
+      <h1>UDLAP Parking</h1>
+      <p class="subtitle">Mapa • Cupos • Selección</p>
+      <div class="badge">Universidad de las Américas Puebla</div>
+
+      <div class="tabs">
+        <button id="loginTab" class="active">Iniciar sesión</button>
+        <button id="registerTab">Registrarme</button>
+      </div>
+
+      <div id="loginForm" class="form">
+        <input type="text" id="loginId" placeholder="ID de Usuario">
+        <div class="input-group">
+          <input type="password" id="loginPassword" placeholder="Contraseña">
+          <span class="eye" onclick="togglePassword('loginPassword', this)">👁</span>
+        </div>
+        <button class="main-btn" onclick="login()">Entrar</button>
+      </div>
+
+      <div id="registerForm" class="form hidden">
+        <div class="user-type">
+          <button type="button" class="type-btn active" data-type="estudiante">Estudiante</button>
+          <button type="button" class="type-btn" data-type="profesor">Profesor</button>
+          <button type="button" class="type-btn" data-type="empleado">Empleado</button>
+        </div>
+        <input type="text" id="regNombre" placeholder="Nombre completo">
+        <input type="text" id="idField" placeholder="ID de Estudiante">
+        <div class="input-group">
+          <input type="password" id="regPass" placeholder="Contraseña">
+          <span class="eye" onclick="togglePassword('regPass', this)">👁</span>
+        </div>
+        <div class="input-group">
+          <input type="password" id="regConfirmPass" placeholder="Confirmar contraseña">
+          <span class="eye" onclick="togglePassword('regConfirmPass', this)">👁</span>
+        </div>
+        <div class="discapacidad">
+          <input type="checkbox" id="regDiscapacidad">
+          <label>♿ Tengo discapacidad</label>
+        </div>
+        <button class="main-btn" onclick="register()">Crear cuenta</button>
+      </div>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

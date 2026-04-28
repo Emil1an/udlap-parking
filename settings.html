@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Configuración</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="phone">
+    <div class="container">
+      <h1>⚙️ Configuración</h1>
+
+      <div class="profile-card">
+        <div class="avatar">U</div>
+        <div class="profile-info">
+          <strong>Emilio Iván Jiménez</strong>
+          <span>ID: 171234</span>
+        </div>
+      </div>
+
+      <div class="setting">
+        <label>Modo de pantalla</label>
+        <select id="themeSelect">
+          <option value="light">Claro</option>
+          <option value="dark">Oscuro</option>
+        </select>
+      </div>
+
+      <div class="setting">
+        <label>Notificaciones</label>
+        <input type="checkbox" id="notifications">
+      </div>
+
+      <div class="setting">
+        <label>Tamaño de letra</label>
+        <select id="fontSize">
+          <option value="small">Pequeño</option>
+          <option value="medium" selected>Mediano</option>
+          <option value="large">Grande</option>
+        </select>
+      </div>
+
+      <div class="setting">
+        <label>Idioma</label>
+        <select id="languageSelect">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+      <button class="main-btn" onclick="window.location.href='home.html'">Volver al Inicio 🗺️</button>
+      <button class="secondary-btn" onclick="logout()">Cerrar sesión</button>
+    </div>
+  </div>
+  <script src="js/settings.js"></script>
+</body>
+
+</html>

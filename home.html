@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>UDLAP Parking - Mapa Interactivo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="phone">
+    <div class="container">
+      <header class="app-header">
+        <div class="logo-section">
+          <h1>Mapa UDLAP 🚗</h1>
+        </div>
+        <div class="header-buttons">
+          <button class="icon-btn" onclick="abrirSoporte()" title="Soporte">❓</button>
+          <button class="icon-btn text-icon" onclick="verReservaciones()">QR</button>
+          <button class="icon-btn" onclick="window.location.href='settings.html'" title="Configuración">⚙️</button>
+        </div>
+      </header>
+
+      <p class="subtitle">Toca y arrastra para explorar el campus</p>
+
+      <div id="map-viewport" class="map-viewport">
+        <div id="map-container" class="map-container" style="left: -150px; top: -50px;">
+          <img src="img/Mapa-udlap.png" alt="Mapa UDLAP" id="map-image">
+          <div class="pin" style="top: 38%; left: 13%;" onclick="showInfo('E3')"></div>
+          <div class="pin" style="top: 52%; left: 18%;" onclick="showInfo('E2')"></div>
+          <div class="pin" style="top: 15%; left: 52%;" onclick="showInfo('E5')"></div>
+          <div class="pin" style="top: 22%; left: 55%;" onclick="showInfo('E6')"></div>
+        </div>
+      </div>
+
+      <p class="subtitle" style="margin-top: 20px;">Disponibilidad en tiempo real</p>
+      <h3 id="titulo-zona" style="text-align: center; margin-top: 10px;">Selecciona una zona en el mapa</h3>
+      <div id="grid-dinamico" class="parking-grid"></div>
+    </div>
+  </div>
+
+  <div id="modal-seleccion" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div id="vista-confirmacion">
+        <div class="modal-header">
+          <h2>¿Reservar lugar?</h2>
+        </div>
+        <div class="modal-body">
+          <p><strong>Estacionamiento:</strong> <span id="modal-zona-nombre"></span></p>
+          <p><strong>Lugar:</strong> <span id="modal-cajon-numero"></span></p>
+          <p class="modal-info-text">Esta reserva es temporal por 15 minutos.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="main-btn" onclick="confirmarReserva()">Confirmar Selección</button>
+          <button class="secondary-btn" onclick="cerrarModal()">Cancelar</button>
+        </div>
+      </div>
+
+      <div id="vista-qr" style="display: none; text-align: center;">
+        <div class="modal-header">
+          <h2>¡Reservación Exitosa!</h2>
+        </div>
+        <div class="qr-container"><canvas id="codigo-qr"></canvas></div>
+        <div class="modal-body" style="text-align: left;">
+          <p><strong>Zona:</strong> <span id="qr-zona-info"></span></p>
+          <p><strong>Lugar:</strong> <span id="qr-cajon-info"></span></p>
+          <p><strong>Usuario:</strong> Emilio Jiménez (171234)</p>
+        </div>
+        <div class="modal-footer">
+          <button class="danger-btn" onclick="cancelarReservacionActual()">Cancelar Reservación</button>
+          <button class="secondary-btn" onclick="cerrarModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-soporte" class="modal-overlay" style="display: none;">
+    <div class="modal-content" style="height: 80vh; overflow-y: auto;">
+      <div class="tabs">
+        <button id="tabReglas" class="active" onclick="switchSoporte('reglas')">Reglas</button>
+        <button id="tabReporte" onclick="switchSoporte('reporte')">Reportar Error</button>
+      </div>
+      <div id="seccion-reglas" class="modal-body">
+        <h3>Reglamento</h3>
+        <ul style="font-size: 14px; text-align: left; line-height: 1.6;">
+          <li>Límite de 15 minutos para ocupar el lugar.</li>
+          <li>Respeta los lugares azules (discapacidad).</li>
+          <li>Reporta si tu lugar está ocupado por otro.</li>
+        </ul>
+      </div>
+      <div id="seccion-reporte" class="form hidden">
+        <select id="tipoReporte">
+          <option value="ocupado">Lugar ocupado</option>
+          <option value="error">Error App</option>
+        </select>
+        <textarea id="descReporte" placeholder="Descripción..." rows="4"></textarea>
+        <button class="main-btn" onclick="enviarReporte()">Enviar</button>
+      </div>
+      <div class="modal-footer">
+        <button class="secondary-btn"
+          onclick="document.getElementById('modal-soporte').style.display='none'">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-historial" class="modal-overlay" style="display: none;">
+    <div class="modal-content" style="height: 70vh; overflow-y: auto;">
+      <div class="modal-header">
+        <h2>Mis Reservaciones</h2>
+      </div>
+      <div id="lista-reservas" class="modal-body" style="background: none; border: none;"></div>
+      <div class="modal-footer">
+        <button class="danger-btn" onclick="borrarHistorial()">Borrar Historial</button>
+        <button class="secondary-btn"
+          onclick="document.getElementById('modal-historial').style.display='none'">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>
