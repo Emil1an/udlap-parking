@@ -46,6 +46,17 @@
           <input type="password" id="regConfirmPass" placeholder="Confirmar contraseña">
           <span class="eye" onclick="togglePassword('regConfirmPass', this)">👁</span>
         </div>
+        <div class="input-group">
+          <select id="tipoVehiculo" onchange="toggleCamposVehiculo()">
+            <option value="coche">Coche 🚗</option>
+            <option value="moto">Motocicleta 🏍️</option>
+            <option value="bicicleta">Bicicleta 🚲</option>
+          </select>
+        </div>
+        <div id="camposExtrasVehiculo">
+          <input type="text" id="vehColor" placeholder="Color del vehículo">
+          <input type="text" id="vehPlacas" placeholder="Número de placas">
+        </div>
         <div class="discapacidad">
           <input type="checkbox" id="regDiscapacidad">
           <label>♿ Tengo discapacidad</label>
