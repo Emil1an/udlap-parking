@@ -50,7 +50,7 @@
         <div class="modal-body">
           <p><strong>Estacionamiento:</strong> <span id="modal-zona-nombre"></span></p>
           <p><strong>Lugar:</strong> <span id="modal-cajon-numero"></span></p>
-          <p class="modal-info-text">Esta reserva es temporal por 15 minutos.</p>
+          <p class="modal-info-text">¡Atención! Tienes 15 minutos para llegar o el lugar se liberará.</p>
         </div>
         <div class="modal-footer">
           <button class="main-btn" onclick="confirmarReserva()">Confirmar Selección</button>
@@ -63,10 +63,13 @@
           <h2>¡Reservación Exitosa!</h2>
         </div>
         <div class="qr-container"><canvas id="codigo-qr"></canvas></div>
+        <div class="timer-box">
+          <p><strong>Tiempo restante:</strong> <span id="timer">15:00</span></p>
+        </div>
         <div class="modal-body" style="text-align: left;">
           <p><strong>Zona:</strong> <span id="qr-zona-info"></span></p>
           <p><strong>Lugar:</strong> <span id="qr-cajon-info"></span></p>
-          <p><strong>Usuario:</strong> Emilio Jiménez (171234)</p>
+          <p><strong>Usuario:</strong> Emiliano Saucedo (171234)</p>
         </div>
         <div class="modal-footer">
           <button class="danger-btn" onclick="cancelarReservacionActual()">Cancelar Reservación</button>
